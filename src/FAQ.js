@@ -5,11 +5,10 @@ import { BiChevronRight } from "react-icons/bi";
 function FAQ() {
 
   const data = faqData;
-  const len = data.length;
 
   function printAnwser(getIndexNumber) {
     if (getIndexNumber >= 0) {
-      for (let i = getIndexNumber; i < len; i++) {
+      for (let i = getIndexNumber; i < data.length; i++) {
         setTimeout(() => {
           return (
             <div className="Anwser-box">
