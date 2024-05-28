@@ -1,0 +1,175 @@
+:root {
+	background-color: rgb(30,27,75);
+}
+
+.FAQ-title {
+	font-size: 48px;
+	font-family: inter;
+	margin-left: 6.4rem;
+	padding: 20px;
+	color: #ffffff;
+}
+
+.FAQ-Questions-boxs {
+	display: flex;
+	align-items:center;
+	justify-content: space-between;
+	border-bottom: solid rgb(240,241,245);
+	cursor: pointer;
+}
+
+.FAQ-Questions-Anwsers-box {
+	position: relative;
+}
+
+.FAQ-Questions-box {
+	width: 620px;
+	height: 370px;
+	margin: 20px;
+	/* padding: 20px; */
+	background-color: #FAFBFF;
+	border-radius: 15px;
+	position: absolute;
+	left: 140px;
+	top: 45%;
+	transform: translateY(-50%);
+}
+
+.FAQ-Questions-box-5 {
+	border-bottom: none;
+}
+
+.icon {
+	color: #A5A6F6;
+	font-size: 40px;
+	width: 40px;
+	height: 40px;
+}
+
+.cricle-content {
+	display: flex;
+}
+
+.at-container {
+	padding: 15px;
+}
+
+.at-item {
+	width: 28px;
+	height: 28px;
+	border-radius: 50px; 
+	background-color: #A5A6F6; 
+	
+	/* animation-name: focus-in-contract;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-delay: 0.3s;
+	animation-iteration-count: 1;
+	animation-direction: alternate-reverse;
+	animation-fill-mode: backwards;
+		 */
+	/* shorthand*/
+	animation: focus-in-contract 1s ease-in 0.3s 1 normal forwards;
+}
+
+.at-item:hover {
+	background-color: #5D5FEF;
+}
+
+@keyframes focus-in-contract {
+		
+	0% {
+		letter-spacing:1em;
+		filter:blur(12px);
+		opacity:0;
+	}
+	100% {
+		filter:blur(0);
+		opacity:2;
+	}
+}
+
+.Anwser-box-container {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	margin-right: 200px;
+}
+
+.FAQ-Anwsers-box {
+	width: 640px;
+	height: 450px;
+	background-color: #FAFBFF;
+	border-radius: 15px;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+	/* overflow: hidden; */
+}
+
+.Anwser-box {
+	margin-top: 50px;
+	margin-left: 130px ;
+}
+
+@media only screen and (max-width:767px) {
+	/* CSS for mobile devices */
+	.FAQ-title {
+		margin-left: 10px;
+		font-size: 24px;
+	}
+	.FAQ-Questions-Anwsers-box {
+		position: static;
+	}
+	.FAQ-Questions-box {
+		position: static;
+		transform: none;
+		border-radius: 0;
+		margin: 0;
+		width: 100%;
+		height: 520px;
+	}
+	.Anwser-box-container {
+		margin-right: 0;
+		margin-top: 15px;
+	}
+	.FAQ-Anwsers-box {
+		width: 100%;
+		height: 350px;
+		border-radius: 0;
+	}
+	.Anwser-box {
+		margin: 20px;
+	}
+	
+}
+@media only screen and (min-width:767px) and (max-width:1023px) {
+	/* CSS for tablet devices */
+	.FAQ-title {
+		margin: 15px;
+		font-size: 38px;
+	}
+	.FAQ-Questions-Anwsers-box {
+		position: static;
+	}
+	.FAQ-Questions-box {
+		position: static;
+		transform: none;
+		border-radius: 15px;
+		margin: 20px 15px;
+		width: 90%;
+		height: 360px;
+	}
+	.Anwser-box-container {
+		margin-right: 0;
+		margin-top: 15px;
+	}
+	.FAQ-Anwsers-box {
+		width: 80%;
+		height: 300px;
+		border-radius: 15px;
+		margin: 10px;
+	}
+	.Anwser-box {
+		margin: 20px;
+		padding: 18px 10px;
+	}
+}
