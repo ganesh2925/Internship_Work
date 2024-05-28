@@ -7,7 +7,7 @@ export const faqData = [
     {
       id : 1,
       question : "Do I need to pay to Instapay even when there is no transaction going on in my business?",
-      answer: "=======********========"
+      answer: "No Answer"
     },
     {
       id : 2,
