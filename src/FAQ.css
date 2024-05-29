@@ -1,175 +1,79 @@
-:root {
-	background-color: rgb(30,27,75);
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 48px;
 }
-
-.FAQ-title {
-	font-size: 48px;
-	font-family: inter;
-	margin-left: 6.4rem;
-	padding: 20px;
-	color: #ffffff;
+.faq-container .title {
+    color:  #FFFFFF;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 64px;
+    font-family: inter;
 }
-
-.FAQ-Questions-boxs {
-	display: flex;
-	align-items:center;
-	justify-content: space-between;
-	border-bottom: solid rgb(240,241,245);
-	cursor: pointer;
+.questions-answer {
+    display: flex;
+    flex-direction: row;
 }
-
-.FAQ-Questions-Anwsers-box {
-	position: relative;
+.questions-answer .questions-box {
+    width: 600px;
+    height: 472px;
+    position: relative;
 }
-
-.FAQ-Questions-box {
-	width: 620px;
-	height: 370px;
-	margin: 20px;
-	/* padding: 20px; */
-	background-color: #FAFBFF;
-	border-radius: 15px;
-	position: absolute;
-	left: 140px;
-	top: 45%;
-	transform: translateY(-50%);
+.questions-answer .questions {
+    width: 640px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 38px;
 }
-
-.FAQ-Questions-box-5 {
-	border-bottom: none;
+.questions {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 0 0 20px;
 }
-
-.icon {
-	color: #A5A6F6;
-	font-size: 40px;
-	width: 40px;
-	height: 40px;
+.questions .question {
+    padding: 24px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    box-shadow: 1px 1px 0px 0px #00000010;
 }
-
-.cricle-content {
-	display: flex;
+.question .question-box {
+    padding-right: 26px;
 }
-
-.at-container {
-	padding: 15px;
+.question .circle-box {
+    width: 40px;
 }
-
-.at-item {
-	width: 28px;
-	height: 28px;
-	border-radius: 50px; 
-	background-color: #A5A6F6; 
-	
-	/* animation-name: focus-in-contract;
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-delay: 0.3s;
-	animation-iteration-count: 1;
-	animation-direction: alternate-reverse;
-	animation-fill-mode: backwards;
-		 */
-	/* shorthand*/
-	animation: focus-in-contract 1s ease-in 0.3s 1 normal forwards;
+.question .circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #A5A6F6;
 }
-
-.at-item:hover {
-	background-color: #5D5FEF;
+.question.active .circle {
+    background-color: #5D5FEF;
 }
-
-@keyframes focus-in-contract {
-		
-	0% {
-		letter-spacing:1em;
-		filter:blur(12px);
-		opacity:0;
-	}
-	100% {
-		filter:blur(0);
-		opacity:2;
-	}
+.question:hover .circle {
+    background-color: #5D5FEF;
 }
-
-.Anwser-box-container {
-	display: flex;
-	align-items: center;
-	justify-content: end;
-	margin-right: 200px;
+.question .right-arrow-box {
+    width: 30px;
+    position: absolute;
+    right: 0;
+    opacity: 0.5;
 }
-
-.FAQ-Anwsers-box {
-	width: 640px;
-	height: 450px;
-	background-color: #FAFBFF;
-	border-radius: 15px;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-	/* overflow: hidden; */
+.question:hover .right-arrow-box {
+    opacity: 1;
 }
-
-.Anwser-box {
-	margin-top: 50px;
-	margin-left: 130px ;
+.question.active .right-arrow-box {
+    opacity: 1;
 }
-
-@media only screen and (max-width:767px) {
-	/* CSS for mobile devices */
-	.FAQ-title {
-		margin-left: 10px;
-		font-size: 24px;
-	}
-	.FAQ-Questions-Anwsers-box {
-		position: static;
-	}
-	.FAQ-Questions-box {
-		position: static;
-		transform: none;
-		border-radius: 0;
-		margin: 0;
-		width: 100%;
-		height: 520px;
-	}
-	.Anwser-box-container {
-		margin-right: 0;
-		margin-top: 15px;
-	}
-	.FAQ-Anwsers-box {
-		width: 100%;
-		height: 350px;
-		border-radius: 0;
-	}
-	.Anwser-box {
-		margin: 20px;
-	}
-	
-}
-@media only screen and (min-width:767px) and (max-width:1023px) {
-	/* CSS for tablet devices */
-	.FAQ-title {
-		margin: 15px;
-		font-size: 38px;
-	}
-	.FAQ-Questions-Anwsers-box {
-		position: static;
-	}
-	.FAQ-Questions-box {
-		position: static;
-		transform: none;
-		border-radius: 15px;
-		margin: 20px 15px;
-		width: 90%;
-		height: 360px;
-	}
-	.Anwser-box-container {
-		margin-right: 0;
-		margin-top: 15px;
-	}
-	.FAQ-Anwsers-box {
-		width: 80%;
-		height: 300px;
-		border-radius: 15px;
-		margin: 10px;
-	}
-	.Anwser-box {
-		margin: 20px;
-		padding: 18px 10px;
-	}
+.questions-answer .answer-box {
+    width: calc(648px - 176px);
+    padding: 40px 32px 40px 144px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
 }
