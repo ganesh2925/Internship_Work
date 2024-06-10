@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
+
+body {
+    background-color: rgb(33,37,41);
+}
 .faq-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -11,7 +16,7 @@
     font-weight: 800;
     font-size: 48px;
     line-height: 64px;
-    font-family: inter;
+    font-family: "Poppins", sans-serif;
 }
 .questions-answer {
     display: flex;
@@ -27,11 +32,15 @@
     background-color: #FFFFFF;
     position: absolute;
     top: 38px;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
 }
 .questions {
     display: flex;
     flex-direction: column;
-    border-radius: 20px 0 0 20px;
 }
 .questions .question {
     padding: 24px 16px;
@@ -39,7 +48,8 @@
     display: flex;
     flex-direction: row;
     position: relative;
-    box-shadow: 1px 1px 0px 0px #00000010;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+    background: rgba(250, 251, 255, 1);
 }
 .question .question-box {
     padding-right: 26px;
@@ -74,6 +84,37 @@
 .questions-answer .answer-box {
     width: calc(648px - 176px);
     padding: 40px 32px 40px 144px;
-    background-color: #FFFFFF;
-    border-radius: 16px;
+    background-color: rgba(250, 251, 255, 1);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+.questions-answer .answer-box h3, .answer-box p {
+    opacity: 0;
+    animation: fadeInBlur 2s;
+    -webkit-animation: fadeInBlur 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@-webkit-keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+  }
 }
