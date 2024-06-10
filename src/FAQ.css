@@ -1,175 +1,120 @@
-:root {
-	background-color: rgb(30,27,75);
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
 
-.FAQ-title {
-	font-size: 48px;
-	font-family: inter;
-	margin-left: 6.4rem;
-	padding: 20px;
-	color: #ffffff;
+body {
+    background-color: rgb(33,37,41);
 }
-
-.FAQ-Questions-boxs {
-	display: flex;
-	align-items:center;
-	justify-content: space-between;
-	border-bottom: solid rgb(240,241,245);
-	cursor: pointer;
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 48px;
 }
-
-.FAQ-Questions-Anwsers-box {
-	position: relative;
+.faq-container .title {
+    color:  #FFFFFF;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 64px;
+    font-family: "Poppins", sans-serif;
 }
-
-.FAQ-Questions-box {
-	width: 620px;
-	height: 370px;
-	margin: 20px;
-	/* padding: 20px; */
-	background-color: #FAFBFF;
-	border-radius: 15px;
-	position: absolute;
-	left: 140px;
-	top: 45%;
-	transform: translateY(-50%);
+.questions-answer {
+    display: flex;
+    flex-direction: row;
 }
-
-.FAQ-Questions-box-5 {
-	border-bottom: none;
+.questions-answer .questions-box {
+    width: 600px;
+    height: 472px;
+    position: relative;
 }
-
-.icon {
-	color: #A5A6F6;
-	font-size: 40px;
-	width: 40px;
-	height: 40px;
+.questions-answer .questions {
+    width: 640px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 38px;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
 }
-
-.cricle-content {
-	display: flex;
+.questions {
+    display: flex;
+    flex-direction: column;
 }
-
-.at-container {
-	padding: 15px;
+.questions .question {
+    padding: 24px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.15);
+    background: rgba(250, 251, 255, 1);
 }
-
-.at-item {
-	width: 28px;
-	height: 28px;
-	border-radius: 50px; 
-	background-color: #A5A6F6; 
-	
-	/* animation-name: focus-in-contract;
-	animation-duration: 1s;
-	animation-timing-function: ease-out;
-	animation-delay: 0.3s;
-	animation-iteration-count: 1;
-	animation-direction: alternate-reverse;
-	animation-fill-mode: backwards;
-		 */
-	/* shorthand*/
-	animation: focus-in-contract 1s ease-in 0.3s 1 normal forwards;
+.question .question-box {
+    padding-right: 26px;
 }
-
-.at-item:hover {
-	background-color: #5D5FEF;
+.question .circle-box {
+    width: 40px;
 }
-
-@keyframes focus-in-contract {
-		
-	0% {
-		letter-spacing:1em;
-		filter:blur(12px);
-		opacity:0;
-	}
-	100% {
-		filter:blur(0);
-		opacity:2;
-	}
+.question .circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #A5A6F6;
 }
-
-.Anwser-box-container {
-	display: flex;
-	align-items: center;
-	justify-content: end;
-	margin-right: 200px;
+.question.active .circle {
+    background-color: #5D5FEF;
 }
-
-.FAQ-Anwsers-box {
-	width: 640px;
-	height: 450px;
-	background-color: #FAFBFF;
-	border-radius: 15px;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-	/* overflow: hidden; */
+.question:hover .circle {
+    background-color: #5D5FEF;
 }
-
-.Anwser-box {
-	margin-top: 50px;
-	margin-left: 130px ;
+.question .right-arrow-box {
+    width: 30px;
+    position: absolute;
+    right: 0;
+    opacity: 0.5;
 }
-
-@media only screen and (max-width:767px) {
-	/* CSS for mobile devices */
-	.FAQ-title {
-		margin-left: 10px;
-		font-size: 24px;
-	}
-	.FAQ-Questions-Anwsers-box {
-		position: static;
-	}
-	.FAQ-Questions-box {
-		position: static;
-		transform: none;
-		border-radius: 0;
-		margin: 0;
-		width: 100%;
-		height: 520px;
-	}
-	.Anwser-box-container {
-		margin-right: 0;
-		margin-top: 15px;
-	}
-	.FAQ-Anwsers-box {
-		width: 100%;
-		height: 350px;
-		border-radius: 0;
-	}
-	.Anwser-box {
-		margin: 20px;
-	}
-	
+.question:hover .right-arrow-box {
+    opacity: 1;
 }
-@media only screen and (min-width:767px) and (max-width:1023px) {
-	/* CSS for tablet devices */
-	.FAQ-title {
-		margin: 15px;
-		font-size: 38px;
-	}
-	.FAQ-Questions-Anwsers-box {
-		position: static;
-	}
-	.FAQ-Questions-box {
-		position: static;
-		transform: none;
-		border-radius: 15px;
-		margin: 20px 15px;
-		width: 90%;
-		height: 360px;
-	}
-	.Anwser-box-container {
-		margin-right: 0;
-		margin-top: 15px;
-	}
-	.FAQ-Anwsers-box {
-		width: 80%;
-		height: 300px;
-		border-radius: 15px;
-		margin: 10px;
-	}
-	.Anwser-box {
-		margin: 20px;
-		padding: 18px 10px;
-	}
+.question.active .right-arrow-box {
+    opacity: 1;
+}
+.questions-answer .answer-box {
+    width: calc(648px - 176px);
+    padding: 40px 32px 40px 144px;
+    background-color: rgba(250, 251, 255, 1);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+.questions-answer .answer-box h3, .answer-box p {
+    opacity: 0;
+    animation: fadeInBlur 2s;
+    -webkit-animation: fadeInBlur 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+@-webkit-keyframes fadeInBlur {
+  0% {
+    opacity: 0;
+    -webkit-filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-filter: blur(0);
+  }
 }

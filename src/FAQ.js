@@ -1,168 +1,95 @@
-import './FAQ.css';
-import { faqData } from "./faqData";
-import { BiChevronRight } from "react-icons/bi";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import './Faq.css';
+import { faqData } from "./FaqData";
 
-function FAQ() {
-
+function Faq() {
   const data = faqData;
+  const [answerData, setAnswerData] = useState({
+    question: data[0].question,
+    answer: data[0].answer,
+    activeIndex: 0
+  });
 
-  function printAnwser(getIndexNumber) {
-    if (getIndexNumber >= 0) {
-      for (let i = getIndexNumber; i < data.length; i++) {
-        setTimeout(() => {
-          return (
-            <div className="Anwser-box">
-              <h4>{data[i].question}</h4>
-              <p>{data[i].answer}</p>
-            </div>
-          );
-        }, 3000);
-      }
+  const intervalId = useRef(null);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(prevSeconds => prevSeconds + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const renderAnswer = useCallback((index) => {
+    clearInterval(intervalId.current);
+    setAnswerData({
+      question: data[index].question,
+      answer: data[index].answer,
+      activeIndex: index
+    });
+  }, [data]);
+
+  useEffect(() => {
+    if (answerData.activeIndex !== 0) {
+      intervalId.current = setInterval(() => {
+        setAnswerData(prev => {
+          if (prev.activeIndex < data.length - 1) {
+            return {
+              question: data[prev.activeIndex + 1].question,
+              answer: data[prev.activeIndex + 1].answer,
+              activeIndex: prev.activeIndex + 1
+            };
+          } else {
+            setSeconds(0);
+            renderAnswer(0);
+            clearInterval(intervalId.current);
+            return prev;
+          }
+        });
+      }, 2000);
     } else {
-      return (
-        <div className="Anwser-box">
-          <h4>{data[0].question}</h4>
-          <p>{data[0].answer}</p>
-        </div>
-      );
+      clearInterval(intervalId.current);
     }
-  }
+
+    return () => clearInterval(intervalId.current);
+  }, [answerData.activeIndex, data, renderAnswer]);
 
   return (
-    <>
-      <div className="FAQ-container">
-        <div className="FAQ-title-box">
-            <h1 className="FAQ-title">Frequently Asked Questions</h1>
+    <div className="faq-container">
+      <h1 className="title">Frequently Asked Questions</h1>
+      <div className="questions-answer">
+        <div className='questions-box'>
+          <div className="questions">
+            {data.map((item, index) => (
+              <div
+                key={index}
+                className={index === answerData.activeIndex ? 'question active' : 'question'}
+                onClick={() => renderAnswer(index)}
+              >
+                <div className='circle-box'>
+                  <div className='circle'></div>
+                </div>
+                <div className='question-box'>
+                  {item?.question}
+                </div>
+                <div className='right-arrow-box'>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 4L16 12L8 20" stroke="#5D5FEF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div className="FAQ-Questions-Anwsers-box">
-
-          <div className="FAQ-Questions-box">
-
-            <div className="FAQ-Questions-box-1 FAQ-Questions-boxs" onClick={() => printAnwser(0)}>
-              <div className='cricle-content'>
-                <div className='at-container'>
-                    <div className='at-item' ></div>
-                </div>
-                <div className='h4-question-container' >
-                  <h4>What is a Payment Gateway?</h4>
-                </div>
-              </div>
-                <div className='icon-container'>
-                  <BiChevronRight className='icon' />
-                </div>
-            </div>
-
-            <div className="FAQ-Questions-box-2 FAQ-Questions-boxs" onClick={() => printAnwser(1)}>
-              <div className='cricle-content'>
-                <div className='at-container'>
-                  <div className='at-item' ></div>
-                </div>
-                <div className='h4-question-container'>
-                  <h4>Do I need to pay to Instapay even when there is no transaction going on in my business?</h4>
-                </div>
-              </div>
-              <div className='icon-container'>
-                  <BiChevronRight className='icon' />
-                </div>
-            </div>
-
-            <div className="FAQ-Questions-box-3 FAQ-Questions-boxs" onClick={() => printAnwser(2)}>
-              <div className='cricle-content'>
-              <div className='at-container'>
-                <div className='at-item' ></div>
-              </div>
-              <div className='h4-question-container'>
-                <h4>What platforms does Instapay payment gateway support?</h4>
-              </div>
-              </div>
-                <div className='icon-container'>
-                  <BiChevronRight className='icon' />
-                </div>
-            </div>
-
-            <div className="FAQ-Questions-box-4 FAQ-Questions-boxs" onClick={() => printAnwser(3)}>
-              <div className='cricle-content'>
-                <div className='at-container'>
-                  <div className='at-item' ></div>
-                </div>
-                <div className='h4-question-container'>
-                  <h4>Does Instapay provide international payments support?</h4>
-                </div>
-              </div>
-                <div className='icon-container'>
-                  <BiChevronRight className='icon' />
-                </div>
-            </div>
-
-            <div className="FAQ-Questions-box-5 FAQ-Questions-boxs" onClick={() => printAnwser(4)}>
-              <div className='cricle-content'>
-                <div className='at-container'>
-                  <div className='at-item' ></div>
-                </div>
-                <div className='h4-question-container'>
-                  <h4>Is there any setup fee or annual maintainance fee that I need to pay regularly?</h4>
-                </div>
-              </div>
-                <div className='icon-container'>
-                  <BiChevronRight className='icon' />
-                </div>
-            </div>
-
-          </div>
-
-          {/* <div className='Anwser-box-container'>
-            <div className="FAQ-Anwsers-box">
-              {data.map((item, index) => {
-                const isSelected = index === getIndex;
-                return (
-                  <div className={`Anwser-box ${isSelected ? 'selected' : ''}`}>
-                    <h4>{item.question}</h4>
-                    <p>{item.answer}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div> */}
-        
-        {/* 
-          <div className='Anwser-box-container'>
-            <div className="FAQ-Anwsers-box">
-            { () => {
-                for (let i = getIndexValue; i < len + 1; i++) {
-                  setTimeout(() => {
-                    return (
-                      <div className="Anwser-box">
-                        <h4>{data[i].question}</h4>
-                        <p>{data[i].answer}</p>
-                      </div>
-                    )
-                  }, 3000);
-                }
-              }
-            }
-              </div>
-            </div> */}
-
-          {/* <div className='Anwser-box-container'>
-            <div className="FAQ-Anwsers-box">
-              <div className="Anwser-box">
-                <h4>{data[0].question}</h4>
-                <p>{data[0].answer}</p>
-              </div>
-            </div>
-          </div> */}
-
-          <div className="Anwser-box-container">
-            <div className="FAQ-Anwsers-box">
-              {printAnwser()}
-            </div>
-          </div>
-
+        <div className='answer-box'>
+          <h3 key={answerData.question}>{answerData.question}</h3>
+          <p key={answerData.answer.answer1}>{answerData.answer.answer1}</p>
+          <p key={answerData.answer.answer2}>{answerData.answer.answer2}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
-export default FAQ;
+export default Faq;

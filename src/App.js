@@ -1,9 +1,11 @@
-import FAQ from './FAQ';
 import './App.css';
+import Faq from './Faq'
 
 function App() {
   return (
-    <FAQ />
+    <>
+      <Faq />
+    </>
   );
 }
 
